@@ -10,24 +10,31 @@ import { BACKEND_URL } from "../../constants/applicationContants";
 import LoadingBox from "../../components/LoadingBox";
 import MessageBox from "../../components/MessageBox";
 import Header from "../../components/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { listProducts } from "../../actions/productActions";
 
 function HomeScreen() {
-	const [products, setProducts] = useState([]);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(false);
+	// const [products, setProducts] = useState([]);
+	// const [loading, setLoading] = useState(true);
+	// const [error, setError] = useState(false);
+
+	const dispatch = useDispatch();
+	const productList = useSelector((state) => state.productList);
+	const { loading, error, products } = productList;
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				let res = await axios.get(`${BACKEND_URL}/api/v1/user/products`);
-				setLoading(false);
-				setProducts(res.data.data);
-			} catch (error) {
-				setLoading(false);
-				setError(error.message);
-			}
-		};
-		fetchData();
-	}, []);
+		// const fetchData = async () => {
+		// 	try {
+		// 		let res = await axios.get(`${BACKEND_URL}/api/v1/user/products`);
+		// 		setLoading(false);
+		// 		setProducts(res.data.data);
+		// 	} catch (error) {
+		// 		setLoading(false);
+		// 		setError(error.message);
+		// 	}
+		// };
+		// fetchData();
+		dispatch(listProducts());
+	}, [dispatch]);
 	return (
 		<>
 			<header>
