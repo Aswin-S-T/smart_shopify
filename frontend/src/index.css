@@ -1,13 +1,96 @@
-body {
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+  background-color: white;
+}
+header,
+footer{
+  background-color: #1a3e30;
+}
+footer{
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+a.navbar-brand{
+  font-size: 25px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+/* .carousel img{
+  height: 350px;
+} */
+.carousel-control-prev-icon,
+.carousel-control-next-icon{
+  top: -120px;
+  position: relative;
+}
+.product-details div ,h2{
+  display: flex;
+  justify-content: center;
+}
+.product-actions div{
+  display: flex;
+  float: right;
+  /* justify-content: space-between; */
+}
+.product-name{
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #111;
+}
+.fa-star,
+.fa-star-half-o{
+  color: gold;
+  border: gold;
+}
+.fa fa-star-o{
+  border: gold;
+}
+div.product-price h2{
+  font-size: 20px;
+  font-family: sans-serif;
+}
+.card{
+  /* box-shadow: 0 4px 8px 0 rgba(255, 249, 249, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  background-color: white;
+  border: none;
+  height: 620px;
+}
+.main{
+  background-color: white;
+}
+.all-products{
+  top: -250px;
+  position: relative;
+}
+footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+div.product-image img{
+  height: 376px;
+}
+.cartbtn,
+.buybtn{
+  width: 150px;
+  border: none;
+  border-radius: 25px;
+  padding: 6px;
+}
+.cartbtn{
+  background-color: rgb(231, 231, 68);
+  color: white;
+}
+.buybtn{
+  background-color: #1ac81a;
+  color: white;
+}
+div.product-details-box{
+  background-color: whitesmoke;
+  border-radius: 10px;
 }
