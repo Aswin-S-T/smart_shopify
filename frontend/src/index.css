@@ -5,6 +5,14 @@
 body{
   background-color: white;
 }
+a{
+  text-decoration: none;
+  color: white;
+}
+a:hover{
+  text-decoration: none;
+  color: white;
+}
 header,
 footer{
   background-color: #1a3e30;
@@ -93,4 +101,31 @@ div.product-image img{
 div.product-details-box{
   background-color: whitesmoke;
   border-radius: 10px;
+}
+/* .detail-image img{
+  width: 450px;
+  transition: transform 0.3s;
+}
+.detail-image img:hover{
+  transform: scale(1.5);
+} */
+.fa-shopping-cart{
+  color: white;
+  font-size: 20px;
+}
+.cart-screen h2{
+  font-size: 24px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.cart-screen{
+  background-color: whitesmoke;
+}
+.cartBox{
+  background-color: white;
+}
+select{
+  width: 100px;
+  border-radius: 5px;
+  padding: 4px;
 }
