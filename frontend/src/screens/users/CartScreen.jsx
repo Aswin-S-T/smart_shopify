@@ -1,9 +1,13 @@
 import React from "react";
+import Header from "../../components/Header";
 
 function CartScreen() {
 	return (
-		<div className="cart-screen">
-			<div className="container-fluid">
+		<div className="cart-screen" style={{ backgroundColor: "whitesmoke" }}>
+			<header>
+				<Header />
+			</header>
+			<div className="container-fluid" style={{ marginTop: "100px" }}>
 				<div className="row">
 					<div className="col-md-8">
 						<h2>Shopping Cart</h2>

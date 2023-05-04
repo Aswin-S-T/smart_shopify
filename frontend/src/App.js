@@ -5,20 +5,22 @@ import HomeScreen from "./screens/users/HomeScreen";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductScreen from "./screens/users/ProductScreen";
 import CartScreen from "./screens/users/CartScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<div>
-				<header>
-					<Header />
-				</header>
+				
 
 				<main className="main">
 					<Routes>
 						<Route path="/" exact={true} element={<HomeScreen />} />
 						<Route path="/product/:id" element={<ProductScreen />} />
 						<Route path="/cart" element={<CartScreen />} />
+						<Route path="/login" element={<LoginScreen />} />
+						<Route path="/register" element={<RegisterScreen />} />
 					</Routes>
 				</main>
 				{/* <footer className="p-2">

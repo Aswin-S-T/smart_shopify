@@ -10,6 +10,7 @@ import MessageBox from "../../components/MessageBox";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import InnerImageZoom from "react-inner-image-zoom";
+import Header from "../../components/Header";
 
 function ProductScreen() {
 	const [product, setProduct] = useState({});
@@ -31,6 +32,9 @@ function ProductScreen() {
 	}, []);
 	return (
 		<div>
+			<header>
+				<Header />
+			</header>
 			{loading ? (
 				<LoadingBox />
 			) : error ? (
@@ -46,7 +50,7 @@ function ProductScreen() {
 									{/* </Zoom> */}
 								</div>
 							</div>
-							<div className="col-md-6">
+							<div className="col-md-6 mt-5">
 								<>
 									<div className="product-details-box w-75 p-4 mt-5">
 										<div className="container">

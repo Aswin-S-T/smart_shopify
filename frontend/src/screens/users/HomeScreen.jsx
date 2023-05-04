@@ -9,6 +9,7 @@ import axios from "axios";
 import { BACKEND_URL } from "../../constants/applicationContants";
 import LoadingBox from "../../components/LoadingBox";
 import MessageBox from "../../components/MessageBox";
+import Header from "../../components/Header";
 
 function HomeScreen() {
 	const [products, setProducts] = useState([]);
@@ -28,27 +29,32 @@ function HomeScreen() {
 		fetchData();
 	}, []);
 	return (
-		<div style={{ backgroundColor: "whitesmoke" }}>
-			<section>
-				<Carousel />
-			</section>
-			<div className="container-fluid">
-				<div className="row all-products">
-					{loading ? (
-						<LoadingBox />
-					) : error ? (
-						<MessageBox />
-					) : (
-						<>
-							{products && products.length > 0 ? (
-								products.map((product) => (
-									<>
-										<div className="col-md-3">
-											<Link to={`/product/${product._id}`}>
+		<>
+			<header>
+				<Header />
+			</header>
+			<div style={{ backgroundColor: "whitesmoke" }} className="mt-5">
+				<section>
+					<Carousel />
+				</section>
+				<div className="container-fluid">
+					<div className="row all-products">
+						{loading ? (
+							<LoadingBox />
+						) : error ? (
+							<MessageBox />
+						) : (
+							<>
+								{products && products.length > 0 ? (
+									products.map((product) => (
+										<>
+											<div className="col-md-3">
 												<div className="card mt-2">
 													<div className="container">
 														<div className="product-image mt-2">
-															<img className="w-100" src={product.image} />
+															<Link to={`/product/${product._id}`}>
+																<img className="w-100" src={product.image} />
+															</Link>
 														</div>
 														<div className="product-details">
 															<h2 className="product-name">{product.name}</h2>
@@ -66,10 +72,12 @@ function HomeScreen() {
 															<div className="row">
 																<div className="container">
 																	<div className="product-cart m-1">
-																		<button className="btn btn-primary">
-																			<i className="fa fa-cart-plus"></i>
-																			Add to cart
-																		</button>
+																		<a href="/cart">
+																			<button className="btn btn-primary">
+																				<i className="fa fa-cart-plus"></i>
+																				Add to cart
+																			</button>
+																		</a>
 																	</div>
 																	<div className="product-buy m-1">
 																		<button className="btn btn-success">
@@ -81,18 +89,18 @@ function HomeScreen() {
 														</div>
 													</div>
 												</div>
-											</Link>
-										</div>
-									</>
-								))
-							) : (
-								<h1>No products Available</h1>
-							)}
-						</>
-					)}
+											</div>
+										</>
+									))
+								) : (
+									<h1>No products Available</h1>
+								)}
+							</>
+						)}
+					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
