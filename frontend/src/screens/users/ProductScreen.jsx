@@ -11,25 +11,19 @@ import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 import InnerImageZoom from "react-inner-image-zoom";
 import Header from "../../components/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { detailsProduct } from "../../actions/productActions";
 
 function ProductScreen() {
-	const [product, setProduct] = useState({});
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(false);
 	const { id } = useParams();
+	const dispatch = useDispatch();
+	const productDetails = useSelector((state) => state.productDetails);
+	const { loading, error, product } = productDetails;
+	let productId = id;
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const res = await axios.get(`${BACKEND_URL}/api/v1/user/product/${id}`);
-				if (res) {
-					setProduct(res.data.data);
-				}
-			} catch (error) {
-				setLoading(true);
-			}
-		};
-		fetchData();
-	}, []);
+		dispatch(detailsProduct(productId));
+	}, [dispatch, productId]);
+
 	return (
 		<div>
 			<header>
@@ -45,9 +39,7 @@ function ProductScreen() {
 						<div className="row">
 							<div className="col-md-6">
 								<div className="detail-image">
-									{/* <Zoom> */}
 									<img src={product.image} />
-									{/* </Zoom> */}
 								</div>
 							</div>
 							<div className="col-md-6 mt-5">
