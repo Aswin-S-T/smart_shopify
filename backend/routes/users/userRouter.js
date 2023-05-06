@@ -3,7 +3,11 @@ const {
 	getAllProducts,
 	getProductDetails,
 } = require("../../controllers/users/productController");
-const { register, login } = require("../../controllers/users/userControllers");
+const {
+	register,
+	login,
+	getCartItems,
+} = require("../../controllers/users/userControllers");
 const data = require("../../data");
 const Product = require("../../models/ProductSchema");
 const userRouter = express.Router();
@@ -35,6 +39,13 @@ userRouter.post("/register", async (req, res) => {
 userRouter.post("/login", async (req, res) => {
 	let userData = req.body;
 	await login(userData).then((response) => {
+		res.send(response);
+	});
+});
+
+userRouter.post("/cart", async (req, res) => {
+	let cartItems = req.body.cartItems;
+	await getCartItems(cartItems).then((response) => {
 		res.send(response);
 	});
 });

@@ -2,6 +2,7 @@ const { successResponse, errorResponse } = require("../../contants/response");
 const User = require("../../models/userSchema");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const Product = require("../../models/ProductSchema");
 const JWT_SECRET = process.env.JWT_SECRET || "something secret";
 
 module.exports = {
@@ -53,6 +54,17 @@ module.exports = {
 				resolve(successResponse);
 			}
 			resolve(errorResponse);
+		});
+	},
+	getCartItems: (cartIds) => {
+		return new Promise(async (resolve, reject) => {
+			let productDetails = await Product.find({ _id: { $in: cartIds } });
+			if (productDetails) {
+				successResponse.data = productDetails;
+			} else {
+				successResponse.data = [];
+			}
+			resolve(successResponse);
 		});
 	},
 };
