@@ -1,6 +1,13 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 function Header() {
+	let [cart, setCart] = useState(0);
+	useEffect(() => {
+		let cartItems = JSON.parse(localStorage.getItem("cart"));
+		setCart(cartItems);
+	}, []);
 	return (
 		<div>
 			<nav class="navbar navbar-expand-lg navbar-light">
@@ -35,7 +42,9 @@ function Header() {
 					<form class="form-inline my-2 my-lg-0 text-white">
 						<a href="/cart">Cart</a>
 						<i className="fa fa-shopping-cart"></i>
-						<span class="badge badge-pill badge-danger">1</span>
+						<span class="badge badge-pill badge-danger">
+							{cart ? cart.length : 0}
+						</span>
 						<div class="dropdown">
 							<div
 								class="dropdown-toggle"

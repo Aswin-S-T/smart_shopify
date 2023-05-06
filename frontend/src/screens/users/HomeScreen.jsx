@@ -14,25 +14,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../../actions/productActions";
 
 function HomeScreen() {
-	// const [products, setProducts] = useState([]);
-	// const [loading, setLoading] = useState(true);
-	// const [error, setError] = useState(false);
-
 	const dispatch = useDispatch();
 	const productList = useSelector((state) => state.productList);
 	const { loading, error, products } = productList;
+
+	const [cartId, setCartId] = useState("");
+
+	const addToCart = (id) => {
+		const cart = JSON.parse(localStorage.getItem("cart")) || [];
+		if (cart && cart.length > 0) {
+			cart.push(id);
+			localStorage.setItem("cart", JSON.stringify(cart));
+		} else {
+			cart.push(id);
+			localStorage.setItem("cart", JSON.stringify(cart));
+		}
+	};
+
 	useEffect(() => {
-		// const fetchData = async () => {
-		// 	try {
-		// 		let res = await axios.get(`${BACKEND_URL}/api/v1/user/products`);
-		// 		setLoading(false);
-		// 		setProducts(res.data.data);
-		// 	} catch (error) {
-		// 		setLoading(false);
-		// 		setError(error.message);
-		// 	}
-		// };
-		// fetchData();
 		dispatch(listProducts());
 	}, [dispatch]);
 	return (
@@ -79,12 +78,15 @@ function HomeScreen() {
 															<div className="row">
 																<div className="container">
 																	<div className="product-cart m-1">
-																		<a href="/cart">
-																			<button className="btn btn-primary">
-																				<i className="fa fa-cart-plus"></i>
-																				Add to cart
-																			</button>
-																		</a>
+																		<button
+																			className="btn btn-primary"
+																			onClick={(e) => {
+																				addToCart(product._id);
+																			}}
+																		>
+																			<i className="fa fa-cart-plus"></i>
+																			Add to cart
+																		</button>
 																	</div>
 																	<div className="product-buy m-1">
 																		<button className="btn btn-success">
