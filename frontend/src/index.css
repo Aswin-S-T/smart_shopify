@@ -15,7 +15,7 @@ a:hover{
 }
 header,
 footer{
-  background-color: #1a3e30;
+  background-color: #003cfd;
 }
 header{
   top: 0;
@@ -153,3 +153,60 @@ div.loginScreen{
   width: 100%;
   padding: 8px;
 }
+.vertical-tabs {
+  display: flex;
+  flex-direction: row;
+  background-color: whitesmoke;
+  width: 100%;
+}
+
+.tab-list {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100vh;
+  background-color: #13022f;
+}
+
+.react-tabs__tab {
+  border: none;
+  padding: 20px;
+  cursor: pointer;
+  background-color: #13022f;
+  color: white;
+  height: 50px;
+  top: 20px;
+  position: relative;
+  line-height: 25px;
+  /* height: 100vh; */
+}
+
+.react-tabs__tab--selected {
+  background-color: red;
+}
+
+.react-tabs__tab-panel {
+  margin-left: 44px;
+  width: 70%;
+}
+
+.dashCard{
+  background-color: white;
+  width: 100%;
+}
+.dashCard h1{
+  display: flex;
+  justify-content: center;
+  color: blue;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+/*Dashboard styles*/
+.navbar-brand{
+  font-family: sans-serif;
+  color: darkcyan;
+  font-weight: bold;
+  font-size: 25px;
+}
+/*Dashboard style*/

@@ -7,13 +7,13 @@ import ProductScreen from "./screens/users/ProductScreen";
 import CartScreen from "./screens/users/CartScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import AddessScreen from "./screens/AddessScreen";
+import Dashboard from "./screens/admin/Dashboard";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<div>
-				
-
 				<main className="main">
 					<Routes>
 						<Route path="/" exact={true} element={<HomeScreen />} />
@@ -21,6 +21,8 @@ function App() {
 						<Route path="/cart" element={<CartScreen />} />
 						<Route path="/login" element={<LoginScreen />} />
 						<Route path="/register" element={<RegisterScreen />} />
+						<Route path="/buy_item/:id" element={<AddessScreen />} />
+						<Route path="/dashboard" element={<Dashboard />} />
 					</Routes>
 				</main>
 				{/* <footer className="p-2">

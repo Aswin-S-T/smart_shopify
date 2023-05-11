@@ -7,9 +7,9 @@ import { BACKEND_URL } from "../../constants/applicationContants";
 function CartScreen() {
 	const [cartItems, setCartItems] = useState([]);
 	const [cartIds, setCartIds] = useState([]);
+	const [uid, setUid] = useState("");
 
 	function handleDeleteClick(id) {
-		console.log("ID------------------", id);
 		const removeItem = cartItems.filter((item) => {
 			return item.id !== id;
 		});
@@ -19,6 +19,10 @@ function CartScreen() {
 
 	useEffect(() => {
 		const items = JSON.parse(localStorage.getItem("cart"));
+		const userDetails = JSON.parse(localStorage.getItem("user"));
+		if (userDetails) {
+			setUid(userDetails.data._id);
+		}
 		const fetchData = async () => {
 			const res = await axios.post(`${BACKEND_URL}/api/v1/user/cart`, {
 				cartItems: items,
@@ -82,7 +86,9 @@ function CartScreen() {
 					<div className="col-md-4 mt-5">
 						<div className="cartBox p-4">
 							<h4>Subtotal (1 item) : Rs 249.00</h4>
-							<button className="buybtn m-2 mt-3">Buy now</button>
+							<a href={`/buy_item/${uid}`}>
+								<button className="buybtn m-2 mt-3">Buy now</button>
+							</a>
 						</div>
 					</div>
 				</div>
